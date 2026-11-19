@@ -27,6 +27,12 @@ Works with Claude Code and other agents that read skills. On claude.ai, download
 | `camera-handheld` | Operator running behind the subject with organic shake | Energy, urgency, behind the scenes |
 | `camera-dolly-out` | Fast pull back from a close-up to an extreme wide reveal | Revealing scale: a team, a catalogue, a system |
 
+## More skills
+
+| Skill | What it makes | Best for |
+| --- | --- | --- |
+| `draw-architecture-building` | 10-second CGI: a pencil draws one residential building, the lines lift into structure and the finished building stands on a sunlit lawn | Developers, architects, real estate launches |
+
 ## Credits
 
 Made at ERE JOTA · Generated with HeyGen + Claude
