@@ -31,7 +31,7 @@ Works with Claude Code and other agents that read skills. On claude.ai, download
 
 | Skill | What it makes | Best for |
 | --- | --- | --- |
-| `draw-architecture-building` | 10-second CGI: a pencil draws one residential building, the lines lift into structure and the finished building stands on a sunlit lawn | Developers, architects, real estate launches |
+| `draw-architecture-building` | CGI: a pencil draws an object from a floor plan and its renders, the lines lift into structure and the finished building matches the renders | Developers, architects, real estate launches |
 
 ## Credits
 
