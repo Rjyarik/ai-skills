@@ -2,7 +2,7 @@
 
 Ten Claude skills that turn a camera move into a ready video-model prompt: the move, the effect and the action stay fixed, while location, time, light and characters are yours to swap. Built for commercial video for social media and websites, and made to work with [HyperFrames](https://hyperframes.heygen.com) by HeyGen.
 
-Десять скилов для Claude: каждый превращает движение камеры в готовый промт для видеомодели. Камера, эффект и действие зафиксированы, а локацию, время, свет и персонажей вы меняете под свой ролик. Инструкции внутри скилов — на русском, шаблоны промтов — на английском.
+Every camera skill follows the same structure: the core of the move (what must not change), what to swap in, a prompt template, a source example, how to use it with HyperFrames (with or without a generated clip), and practical tips.
 
 ## Install
 
