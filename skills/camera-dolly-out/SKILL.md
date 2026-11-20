@@ -1,43 +1,43 @@
 ---
 name: "camera-dolly-out"
-description: "Dolly out — быстрый отъезд камеры назад от крупного плана лица или детали до сверхобщего плана, который раскрывает масштаб вокруг героя. Используй при создании коммерческого видео для соцсетей и сайтов (HyperFrames, промты для видеомоделей), когда нужен reveal — показать систему, команду, ассортимент или аудиторию за одним человеком или продуктом."
+description: "Dolly out — a fast camera pull-back from a close-up of a face or detail to an extreme wide shot that reveals the scale around the hero. Use when making commercial video for social media and websites (HyperFrames, video-model prompts) when you need a reveal — showing the system, team, product range or audience behind one person or product."
 ---
 
-# Dolly out (отъезд с раскрытием масштаба)
+# Dolly out (pull-back reveal of scale)
 
-Кадр начинается с крупного плана спокойного лица. Камера быстро уезжает прямо назад, и оказывается, что герой стоит один посреди огромного пространства, окружённый сотнями одинаковых объектов, и все они обращены к нему. Приём переворачивает смысл кадра: от человека к масштабу того, что за ним стоит.
+The shot opens on a close-up of a calm face. The camera pulls straight back fast, and it turns out the hero is standing alone in the middle of a huge space, surrounded by hundreds of identical objects, all facing them. The move flips the meaning of the shot: from a single person to the scale of what stands behind them.
 
-Из исходного кадра берётся только камера, эффект и действие. Локация, время суток, свет, плёнка и персонажи подставляются под задачу ролика.
+Only the camera, the effect and the action are taken from the source shot. Location, time of day, light, film look and characters are swapped in to fit the video.
 
-## Ядро приёма — не менять
-- Первый кадр: крупный план лица или детали, по которому нельзя догадаться об окружении.
-- Камера едет строго назад по прямой, быстро; без панорам, зума и склеек.
-- Раскрытие: герой один в огромном пространстве, вокруг сотни однотипных объектов, все повёрнуты к нему.
-- Финал: сверхобщий план, герой маленький в центре.
-- Звук нарастает вместе с отъездом: низкий гул плюс детальные звуки объектов.
-- Строки `dolly out ONLY` и `No pan, no zoom, no cuts` оставлять всегда.
+## Core of the move — do not change
+- Opening frame: a close-up of a face or detail that gives no clue about the surroundings.
+- The camera travels straight back in a line, fast; no pans, no zoom, no cuts.
+- The reveal: the hero alone in a huge space, surrounded by hundreds of identical objects, all turned toward them.
+- End: an extreme wide shot, the hero small in the center.
+- Audio builds with the pull-back: a low hum plus detailed sounds from the objects.
+- Always keep the lines `dolly out ONLY` and `No pan, no zoom, no cuts`.
 
-## Что подставлять
-Плёнка или look, основной свет и цвет контрового света, герой или продукт (с референсом Image 1), огромное пространство (склад, ангар, зал, стадион, поле), множество объектов вокруг (роботы, экраны, коробки, люди, машины), звуки.
+## What to swap in
+Film stock or look, key light and rim light color, the hero or product (with an Image 1 reference), a huge space (warehouse, hangar, hall, stadium, field), the mass of objects around them (robots, screens, boxes, people, cars), sounds.
 
-Для бренда множество объектов = то, что стоит за героем: ИИ-агенты, команда, клиенты, товары, заказы, серверы, направления путешествий.
+For a brand, the mass of objects = what stands behind the hero: AI agents, the team, customers, products, orders, servers, travel destinations.
 
-## Шаблон промта (на английском)
+## Prompt template
 ```
 Shot on [FILM STOCK / LOOK], [KEY LIGHT], [RIM LIGHT COLOR] rim light, haze, cinematic. Image 1 is [SUBJECT]: keep [exact face and clothing]. Opening frame: close-up of [SUBJECT]'s calm face, lit in [COLOR]. Camera movement: dolly out ONLY. The camera pulls straight back fast, revealing that [SUBJECT] stands alone in [VAST SPACE] surrounded by [HUNDREDS OF OBJECTS with a shared visual detail], all turned toward [SUBJECT]. End: extreme wide shot, [SUBJECT] small in the center. Audio: [LOW HUM] rising, [OBJECT DETAIL SOUNDS]. No pan, no zoom, no cuts.
 ```
 
-## Исходный пример
+## Source example
 ```
 Shot on Kodak Vision3 500T 35mm film, dark industrial light, red rim light, haze, cinematic. Image 1 is the man: keep his exact face, shaved head, clear glasses, beard and black T-shirt. Opening frame: close-up of his calm face, lit in red. Camera movement: dolly out ONLY. The camera pulls straight back fast, revealing that he stands alone in a vast warehouse surrounded by hundreds of frozen humanoid robots with glowing red LED faces, all turned toward him. End: extreme wide shot, him small in the center. Audio: low electronic hum rising, servo whirs. No pan, no zoom, no cuts.
 ```
 
-## С HyperFrames
-- **Живой кадр.** Сгенерируй клип по шаблону в видеомодели и передай в HyperFrames прямую https-ссылку на mp4. Клип вставляется без звука, поэтому нарастающий гул закажи в промте compose. Титр или слоган выводи на финальном сверхобщем плане.
-- **Без генерации.** Приём хорошо делается графикой. В compose опиши: кадр начинается с плотного крупного плана центрального элемента (лицо, логотип, экран продукта), затем вся сцена быстро уменьшается с масштаба 5–6 до 1 с плавным замедлением и открывает сетку из десятков или сотен элементов вокруг (карточки, экраны, аватары, логотипы), центральный элемент остаётся в центре; звук нарастает до остановки.
+## With HyperFrames
+- **Live-action shot.** Generate the clip from the template in a video model and pass HyperFrames a direct https link to the mp4. The clip is inserted without sound, so request the rising hum in the compose prompt. Put a title or tagline on the final extreme wide shot.
+- **Without generation.** This move works well as graphics. In compose, describe: the shot opens on a tight close-up of the central element (a face, a logo, a product screen), then the whole scene quickly scales down from 5–6 to 1 with a smooth ease-out, revealing a grid of dozens or hundreds of elements around it (cards, screens, avatars, logos); the central element stays in the center; the sound builds until the stop.
 
-## Советы
-- У объектов вокруг должна быть общая яркая деталь (светящиеся лица, одинаковые экраны, один цвет): по ней множество читается с первого взгляда.
-- Выражение лица в начале спокойное: контраст спокойствия и масштаба и создаёт эффект.
-- Сильный финальный кадр ролика или переход к логотипу.
-- Для 9:16 выстраивай объекты рядами в глубину и вверх, а не только по сторонам.
+## Tips
+- The surrounding objects need a shared, bright detail (glowing faces, identical screens, one color): that is what makes the mass read at first glance.
+- Keep the facial expression calm at the start: the contrast between calm and scale is what creates the effect.
+- A strong closing shot for a video, or a transition to the logo.
+- For 9:16, line the objects up in rows going back and up, not just out to the sides.

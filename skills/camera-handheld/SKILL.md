@@ -1,43 +1,43 @@
 ---
 name: "camera-handheld"
-description: "Handheld — ручная камера, оператор бежит следом за героем с живой тряской и рывками кадра, документальный реализм. Используй при создании коммерческого видео для соцсетей и сайтов (HyperFrames, промты для видеомоделей), когда нужна энергия, спешка, погоня, эффект присутствия или ощущение настоящей съёмки без постановки."
+description: "Handheld — a handheld camera with the operator running right behind the hero, live shake and jolts in the frame, documentary realism. Use when making commercial video for social media and websites (HyperFrames, video-model prompts) that needs energy, urgency, a chase, a sense of presence or the feel of real, unstaged footage."
 ---
 
-# Handheld (ручная камера следом за героем)
+# Handheld (handheld camera following the hero)
 
-Оператор бежит прямо за героем: кадр трясётся, дышит, герой то и дело уходит к краю, камера его догоняет. Ощущение, что всё происходит по-настоящему и прямо сейчас. Приём для спешки, погони, закулисья, роликов в стиле репортажа.
+The operator runs right behind the hero: the frame shakes and breathes, the hero keeps drifting to the edge and the camera catches up. It feels like everything is happening for real, right now. The move for urgency, chases, behind-the-scenes and reportage-style videos.
 
-Из исходного кадра берётся только камера, эффект и действие. Локация, время суток, свет, плёнка и персонажи подставляются под задачу ролика.
+Only the camera, the effect and the action are taken from the source shot. Location, time of day, light, film look and characters are swapped in to fit the video.
 
-## Ядро приёма — не менять
-- Камера в руках оператора, который бежит сразу за героем.
-- Органичная тряска, «дыхание» кадра, мелкие рывки при перекадровке; оператор с трудом удерживает героя в кадре.
-- Герой быстро движется через людное место, преодолевает препятствия, оглядывается через плечо.
-- Документальный look: 16mm, жёсткий естественный свет, сильное зерно.
-- Звук: шаги, голоса толпы, тяжёлое дыхание.
-- Строки `handheld ONLY` и `No zoom, no cuts` оставлять всегда.
+## Core of the move — do not change
+- The camera is in the hands of an operator running right behind the hero.
+- Organic shake, a "breathing" frame, small jolts when reframing; the operator struggles to keep the hero in frame.
+- The hero moves fast through a crowded place, gets past obstacles, glances back over the shoulder.
+- Documentary look: 16mm, harsh natural light, heavy grain.
+- Audio: footsteps, crowd voices, heavy breathing.
+- Always keep the lines `handheld ONLY` and `No zoom, no cuts`.
 
-## Что подставлять
-Плёнка (лучше 16mm или «documentary»), свет, герой (с референсом Image 1), людная локация, препятствия и что герой задевает, куда он спешит, звуки среды.
+## What to swap in
+Film stock (16mm or a "documentary" look works best), light, the hero (with an Image 1 reference), a crowded location, the obstacles and what the hero knocks into, where they are rushing to, ambient sounds.
 
-## Шаблон промта (на английском)
+## Prompt template
 ```
 Shot on [FILM STOCK] 16mm film, [HARSH NATURAL LIGHT], documentary realism, heavy grain. Image 1 is [SUBJECT]: keep [exact face and clothing]. [SUBJECT] runs fast through [CROWDED LOCATION], [OBSTACLE ACTIONS: shoving past ..., knocking over ...], glancing back over the shoulder. Camera movement: handheld ONLY. An operator runs right behind [SUBJECT] with organic shake, breathing, small reframing bumps, fighting to keep [SUBJECT] in frame. Audio: footsteps, [CROWD SOUNDS], heavy breathing. No zoom, no cuts.
 ```
-Спокойный вариант для интервью и закулисья: замени бег на `walks through` и тряску на `subtle handheld sway and breathing, gentle reframing`.
+Calm variant for interviews and behind-the-scenes: replace the running with `walks through` and the shake with `subtle handheld sway and breathing, gentle reframing`.
 
-## Исходный пример
+## Source example
 ```
 Shot on Kodak Vision3 500T 16mm film, harsh midday sun, documentary realism, heavy grain. Image 1 is Ramón: keep his exact face, mustache, slicked hair, cream guayabera and gold chain. Ramón runs fast through a crowded street market, shoving past stalls, knocking over a crate of oranges, glancing back over his shoulder. Camera movement: handheld ONLY. An operator runs right behind him with organic shake, breathing, small reframing bumps, fighting to keep him in frame. Audio: footsteps, shouting vendors, heavy breathing. No zoom, no cuts.
 ```
 
-## С HyperFrames
-- **Живой кадр.** Сгенерируй клип по шаблону в видеомодели и передай в HyperFrames прямую https-ссылку на mp4. Клип вставляется без звука, поэтому шаги, толпу и дыхание закажи в промте compose.
-- **Оформление в HyperFrames.** Титры поверх трясущегося клипа держи неподвижными и крупными: контраст статичного текста и живого кадра хорошо читается. Субтитры ставь на плашке.
-- **Без генерации.** Ручную камеру можно добавить к статичному кадру или графике: в compose опиши лёгкое плавающее смещение кадра на 6–10 px и поворот до 0.3 градуса с медленным «дыханием», кадр чуть увеличен, чтобы не было видно краёв. Тряска задаётся фиксированными ключевыми кадрами, а не случайными числами: рендер должен быть одинаковым при каждом запуске.
+## With HyperFrames
+- **Live-action shot.** Generate the clip from the template in a video model and pass HyperFrames a direct https link to the mp4. The clip is inserted without sound, so request the footsteps, crowd and breathing in the compose prompt.
+- **Styling in HyperFrames.** Keep titles over the shaky clip static and large: the contrast between still text and a live frame reads well. Put subtitles on a background plate.
+- **Without generation.** A handheld feel can be added to a still shot or graphics: in compose, describe a slight floating offset of the frame by 6–10 px and rotation of up to 0.3 degrees with a slow "breathing" rhythm, with the frame slightly scaled up so the edges never show. Define the shake with fixed keyframes, not random numbers: the render must be identical on every run.
 
-## Советы
-- Препятствия конкретизируй (ящик, стулья, вешалка с одеждой): они дают кадру события.
-- Взгляд через плечо создаёт историю: за героем кто-то или что-то гонится (дедлайн, распродажа, уходящий автобус).
-- Для 9:16 приём идеален: съёмка со спины естественно ложится в вертикаль.
-- Не сочетай с другими движениями камеры в одном клипе.
+## Tips
+- Make the obstacles specific (a crate, chairs, a clothing rack): they give the shot events.
+- A glance over the shoulder creates a story: someone or something is chasing the hero (a deadline, a sale, a departing bus).
+- The move is ideal for 9:16: shooting from behind fits the vertical frame naturally.
+- Don't combine it with other camera moves in the same clip.

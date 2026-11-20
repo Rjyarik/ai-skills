@@ -1,70 +1,70 @@
 ---
 name: "draw-architecture-building"
-description: "Draw-to-build — CGI-ролик: карандаш рисует объект по плану или фасаду, линии поднимаются в конструкцию, панели встают на место, и здание появляется в готовом виде, как на рендере. Вход: изображения плана дома и его отрендеренные фотографии. Длительность и объект задаёт заказчик. Используй при создании коммерческого видео для соцсетей и сайтов (HyperFrames, промты для видеомоделей), когда нужен визуал для девелопера, архитектора, застройщика или недвижимости: от чертежа к готовому объекту."
+description: "Draw-to-build — a CGI clip in which a pencil draws the building from its floor plan or elevation, the lines rise into a structure, panels lock into place, and the finished building appears exactly as in the render. Input: floor-plan images of the house and its rendered images. The client sets the duration and the building. Use when making commercial video for social media and websites (HyperFrames, video-model prompts) when a developer, architect, builder or real-estate project needs a visual that goes from drawing to finished building."
 ---
 
-# Draw-to-build (от чертежа к зданию)
+# Draw-to-build (from drawing to building)
 
-Карандаш рисует объект на белом листе по плану или фасаду, линии превращаются в каркас, панели встают на места, и объект появляется в том виде, в котором он показан на рендерах. Это визуальная метафора «от идеи к объекту»: тот же дом проходит путь от чертежа до готовой постройки.
+A pencil draws the building on a white sheet from its floor plan or elevation, the lines turn into a frame, panels lock into place, and the building appears exactly as it looks in the renders. It's a visual metaphor for "from idea to building": the same house travels from drawing to finished structure.
 
-Вход — изображения. План дома задаёт геометрию: контур, этажность, расположение проёмов и балконов. Отрендеренные фотографии задают финальный вид: материалы, цвета, свет, ландшафт. Механика сборки, порядок блоков и правила «без морфинга» остаются фиксированными, всё остальное берётся из входных изображений.
+The input is images. The floor plan sets the geometry: outline, number of floors, placement of openings and balconies. The rendered images set the final look: materials, colors, light, landscape. The assembly mechanics, the order of the blocks and the "no morphing" rules stay fixed; everything else comes from the input images.
 
-## Входные данные
-- **План дома (Image 1).** Используется для рисования: контуры, стены, перекрытия, проёмы, балконы. Если план многоэтажный, каждый этаж — отдельный блок сборки снизу вверх.
-- **Рендеры (Image 2 и далее).** Используются для финального вида: фасад, материалы, остекление, крыша, входная группа, ландшафт, свет и время суток. Один рендер — основной кадр, остальные — уточнение деталей.
-- **Объект и длительность** задаёт заказчик: дом, таунхаус, башня, вилла, отдельный блок или комплекс. Длительность и число блоков подбираются под объект и формат (например, 8, 10 или 15 секунд). Дробные отрезки времени выбирай сам под число этапов.
-- Если план и рендеры расходятся (разное число этажей, другие окна или балконы), не решай это молча. Назови расхождение и уточни у заказчика, какой источник главный. По умолчанию главный — план для геометрии, рендер для материалов.
+## Input
+- **Floor plan (Image 1).** Used for the drawing: outlines, walls, floor slabs, openings, balconies. If the plan has several floors, each floor is a separate assembly block, built bottom to top.
+- **Renders (Image 2 onward).** Used for the final look: facade, materials, glazing, roof, entrance, landscape, light and time of day. One render is the main shot; the rest clarify details.
+- **Building and duration** are set by the client: a house, townhouse, tower, villa, a single block or a whole complex. Duration and the number of blocks are chosen to fit the building and the format (for example, 8, 10 or 15 seconds). Pick fractional time segments yourself to match the number of stages.
+- If the plan and the renders disagree (different number of floors, different windows or balconies), don't resolve it silently. Name the mismatch and ask the client which source takes priority. By default, the plan wins for geometry and the render wins for materials.
 
-Перед генерацией собери из входных изображений короткую «карточку объекта»: этажность, форма в плане, балконы и их расположение, окна, материалы фасада, крыша, входная группа, ландшафт, свет. Эта карточка попадает в каждый блок промта, чтобы объект не менялся между кадрами.
+Before generating, put together a short "building card" from the input images: number of floors, footprint shape, balconies and their placement, windows, facade materials, roof, entrance, landscape, light. This card goes into every block of the prompt so the building doesn't change from shot to shot.
 
-## Ядро приёма — не менять
-- **Один и тот же объект на всём протяжении.** Этажность, балконы, окна и пропорции из карточки не меняются от кадра к кадру и совпадают с рендером в финальном кадре.
-- **Только жёсткая механическая сборка.** Элементы выдвигаются, поворачиваются, складываются, скользят и фиксируются. Никаких морфингов, растворений, появления из ничего, частиц и телепортации.
-- **Каждый элемент сохраняет исходное положение и геометрию.** Панель, которая встала на место, остаётся там до конца ролика.
-- **Порядок сборки от основания к верху:** сначала каркас и перекрытия, затем стены и фасад, потом остекление, ограждения и крыша.
-- **Финальный кадр похож на рендер.** Хиро-кадр повторяет ракурс и свет рендера, насколько это возможно.
-- **Строки `NO morphing`, `no dissolves` и `No text, logos or narration` оставлять всегда.**
+## Core of the move — do not change
+- **The same building from start to finish.** Floor count, balconies, windows and proportions from the card don't change from shot to shot and match the render in the final shot.
+- **Rigid mechanical assembly only.** Elements extend, rotate, fold, slide and lock. No morphing, dissolves, appearing out of nowhere, particles or teleportation.
+- **Every element keeps its original position and geometry.** A panel that has locked into place stays there until the end of the clip.
+- **Assembly order from the base up:** first the frame and floor slabs, then walls and facade, then glazing, railings and roof.
+- **The final shot looks like the render.** The hero shot repeats the render's angle and light as closely as possible.
+- **Always keep the lines `NO morphing`, `no dissolves` and `No text, logos or narration`.**
 
-## Что подставлять
-Объект и число этажей, материалы фасада (из рендера), форма и балконы (из плана), локация и ландшафт (из рендера), время суток и свет (из рендера), цвет бумаги и карандаша, длительность, стиль звука.
+## What to swap in
+The building and number of floors, facade materials (from the render), shape and balconies (from the plan), location and landscape (from the render), time of day and light (from the render), paper and pencil color, duration, sound style.
 
-## Таймлайн (шаблон, длительность задаётся заказчиком)
-Блоки ниже заданы долями от общей длительности, поэтому их можно растянуть или сжать. Число этапов тоже меняется: для простого объекта хватит 5–6 блоков, для комплекса их может быть 10 и больше.
+## Timeline (template; the client sets the duration)
+The blocks below are given as shares of the total duration, so they can be stretched or compressed. The number of stages can change too: a simple building needs 5–6 blocks, a complex may need 10 or more.
 
-| Доля ролика | Что происходит |
+| Share of clip | What happens |
 | --- | --- |
-| 0–15% | Макро: рука рисует контур и перспективу по плану. Быстрые переходы |
-| 15–30% | Ускоренная прорисовка проёмов, балконов и швов. Камера отъезжает и показывает весь эскиз |
-| 30–40% | Линии отрываются от листа, превращаются в направляющие и выстраивают перекрытия этажей |
-| 40–50% | Балконы выезжают, окна едут по направляющим, выступы поворачиваются, крыша раскрывается |
-| 50–55% | Фасадные панели из рендера переворачиваются наружу и встают этаж за этажом |
-| 55–62% | Деревянные панели раскрываются, рамы вставляются в проёмы, стёкла поднимаются из пазов |
-| 62–68% | Ограждения поднимаются, поручни стыкуются, входная группа раскрывается |
-| 68–75% | Линии дорожки становятся бордюром, плитка собирается в дорожку, белая земля превращается в ландшафт из рендера |
-| 75–85% | Деревья растут, белое окружение уходит, открывается небо и камера спускается на уровень глаз |
-| 85–94% | Медленный наезд на готовый объект |
-| 94–100% | Статичный хиро-кадр, как на рендере |
+| 0–15% | Macro: a hand draws the outline and perspective from the plan. Fast transitions |
+| 15–30% | Sped-up drawing of openings, balconies and joints. The camera pulls back to show the whole sketch |
+| 30–40% | Lines lift off the sheet, turn into guide rails and build up the floor slabs |
+| 40–50% | Balconies extend, windows slide along the rails, projections rotate, the roof unfolds |
+| 50–55% | Facade panels from the render flip outward and lock in, floor by floor |
+| 55–62% | Wood panels unfold, frames slot into the openings, glass panes rise out of their grooves |
+| 62–68% | Railings rise, handrails join up, the entrance unfolds |
+| 68–75% | Path lines become a curb, tiles assemble into a walkway, the white ground turns into the landscape from the render |
+| 75–85% | Trees grow, the white surroundings fall away, the sky opens up and the camera descends to eye level |
+| 85–94% | Slow push-in on the finished building |
+| 94–100% | Static hero shot, as in the render |
 
-## Шаблон промта (на английском)
+## Prompt template
 ```
 Generate exactly [DURATION] seconds of ultra-photorealistic [ASPECT RATIO] architectural CGI, following all storyboard frames in chronological order. Image 1 is the floor plan: build the geometry exactly from it, [FLOOR COUNT] floors, [FOOTPRINT SHAPE], [BALCONY LAYOUT], [WINDOW PATTERN]. Images 2+ are the final renders: match their [FACADE MATERIALS], [ROOF], [GLAZING], [LANDSCAPE], [LIGHT AND TIME OF DAY]. Feature ONE identical building throughout. [START %]-[END %]: [MACRO DRAWING from Image 1: tool, hand, paper, linework]. [BLOCK]: [ACCELERATED DRAWING AND PULL-BACK]. [BLOCK]: [LINES LIFT, STRUCTURE RISES, FLOOR BY FLOOR]. [BLOCK]: [BALCONIES, WINDOWS, ROOF UNFOLD INTO 3D MODEL]. [BLOCK]: [FACADE PANELS FROM RENDER FLIP AND LOCK]. [BLOCK]: [WOOD, FRAMES, GLASS INSTALLED]. [BLOCK]: [RAILINGS, HANDRAILS, CANOPY]. [BLOCK]: [PATHWAY AND GROUND TRANSFORM TO LANDSCAPE FROM RENDER]. [BLOCK]: [TREES GROW, SKY REVEALED, CAMERA DESCENDS]. [BLOCK]: [SLOW PUSH-IN TO FINISHED BUILDING]. [FINAL BLOCK]: Completely static hero shot matching Image 2 composition and light. CRITICAL: all transformations must be visible, sequential, rigid-body mechanical construction with precise extrusion, rotation, folding, sliding, assembly and locking. Every element retains its original position and geometry. NO morphing, dissolves, fades, texture blending, magical appearance, particles, teleportation or abrupt transformations. Preserve identical building proportions, floor count, windows and balconies throughout, as defined by Image 1. Dynamic macro camera during drawing, continuous three-quarter perspective during construction, smooth camera descent during landscape assembly and static final hero. Realistic mechanical physics, sharp material details, cinematic sunlight, precise construction ASMR and premium electronic soundtrack. No text, logos or narration.
 ```
 
-Блоки в квадратных скобках заполняются по карточке объекта. Проценты переводятся в секунды по выбранной длительности.
+Fill the bracketed blocks from the building card. Convert the percentages to seconds based on the chosen duration.
 
-## Пример заполнения (шестиэтажный дом, 10 секунд)
-Этажность, балконы и окна берутся из плана, материалы, ландшафт и свет — из рендера. Пример: `six-story residential building`, `stacked balconies, angular geometry, stone facades, warm wood panels, dark metal frames and panoramic glass`.
+## Worked example (six-story building, 10 seconds)
+Floor count, balconies and windows come from the plan; materials, landscape and light come from the render. Example: `six-story residential building`, `stacked balconies, angular geometry, stone facades, warm wood panels, dark metal frames and panoramic glass`.
 
-## С HyperFrames
-- **Генерация клипа.** Передай в видеомодель план и рендеры как референсы (Image 1, Image 2 и далее), затем сгенерируй клип по промту. Если выбранная модель не принимает изображения как референсы, перенеси карточку объекта в текст промта и отметь это заказчику: без референсов точность геометрии падает.
-- **Передай в HyperFrames** прямую https-ссылку на mp4. Звук из промта (ASMR и электронный саундтрек) клип не несёт, поэтому музыку и звуки карандаша добавь в compose.
-- **Поверх клипа** удобно ставить название проекта, площадь, число этажей или логотип девелопера.
-- **Для цепочки кадров** заканчивай ролик статичным хиро-кадром: к нему удобно стыковать следующий кадр из серии.
+## With HyperFrames
+- **Generating the clip.** Pass the plan and renders to the video model as references (Image 1, Image 2 and onward), then generate the clip from the prompt. If the chosen model doesn't accept images as references, move the building card into the prompt text and flag it to the client: without references, geometric accuracy drops.
+- **Hand HyperFrames** a direct https link to the mp4. The clip doesn't carry the sound from the prompt (the ASMR and electronic soundtrack), so add the music and pencil sounds in compose.
+- **Over the clip**, the project name, floor area, number of floors or the developer's logo work well as overlays.
+- **For a sequence of shots**, end the clip on the static hero shot: it's an easy point to cut to the next shot in the series.
 
-## Советы
-- Один объект на весь клип. Смена этажей или балконов между кадрами ломает иллюзию сборки.
-- Если модель добавляет элементы, которых нет в плане или на рендере, сократи описание до 4–5 ключевых деталей и повтори `Preserve identical building proportions`.
-- Если сборка выглядит «размытой», опиши механику точнее: какие панели, в каком порядке и каким движением встают.
-- Для вертикального формата сократи число блоков до 5–6 и поставь объект по центру кадра, иначе верх или низ обрежется.
-- Если клип получился без сборки, а просто с появлением объекта, это морфинг: перепиши блоки сборки через механику (выдвинуть, повернуть, встать на фиксатор).
-- Если на вход пришёл только рендер без плана, геометрию берём с рендера и явно говорим заказчику, что планировка может отличаться от проекта.
+## Tips
+- One building for the whole clip. Changing floors or balconies between shots breaks the illusion of assembly.
+- If the model adds elements that aren't in the plan or the render, cut the description down to 4–5 key details and repeat `Preserve identical building proportions`.
+- If the assembly looks "mushy", describe the mechanics more precisely: which panels, in what order and with what motion they lock in.
+- For vertical format, cut the number of blocks to 5–6 and center the building in the frame, otherwise the top or bottom gets cropped.
+- If the clip came out without assembly and the building just appears, that's morphing: rewrite the assembly blocks in mechanical terms (extend, rotate, lock into place).
+- If you only got a render and no plan, take the geometry from the render and tell the client explicitly that the layout may differ from the actual design.
